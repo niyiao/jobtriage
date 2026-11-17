@@ -1,0 +1,40 @@
+# jobtriage config. This file's presence marks this folder as the op
+# folder — keep it, even all-commented. Every key ships commented out:
+# jobtriage runs on its defaults until you fill them in. Every key is
+# documented in the repo's docs/config.md (plan 03).
+
+[search]
+# locations = ["worldwide", "emea"]        # where you can work from: regions and ISO country codes
+# families = ["software"]                  # what kind of role you want
+# employment = ["full-time"]               # full-time, contract, part-time — best effort
+# max_age_days = 21                        # how old a posting can be
+# limit = 50                               # per board, per run
+
+[filter]
+# preset = "web-engineer"  # title-filter preset (empty = no title filter)
+
+[letters]
+# paragraphs = 2           # body paragraphs in a cover letter
+
+[sources]
+# euremotejobs' terms ban automated collection outright, so it ships
+# off: read `jobtriage sources info euremotejobs`, then run
+# `jobtriage sources enable euremotejobs` to accept them. Everything
+# else is on by default.
+disabled = ["euremotejobs"]
+
+[browser]
+# port = 9222
+
+[network]
+# user_agent = ""          # the scraper's User-Agent; empty = a desktop browser string
+
+[tui]
+# default_filter = "to_apply"
+# page_size = 30
+
+[tui.keys]
+# Rebind any action by name; the help overlay and footer follow.
+# skipped = "x"
+# applied = "d"
+# half_down = "ctrl+f"

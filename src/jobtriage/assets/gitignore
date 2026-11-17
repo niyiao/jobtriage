@@ -1,0 +1,9 @@
+# Never commit: the browser profile (cookies), secrets, HARs
+.browser-profile/
+.env
+*.har
+
+# Runtime data
+jobtriage.db
+.jobtriage/logs/
+.DS_Store

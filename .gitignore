@@ -1,0 +1,30 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Browser automation profile (agent-browser) — never commit, contains cookies
+.browser-profile/
+
+# Job database (runtime data)
+jobs.db
+jobtriage.db
+
+# Personal data — lives in the op folder, never in the repo (safety net)
+user/
+letters/
+profile/
+*.har
+.DS_Store
+
+# Personal planning notes — never ship
+plans/
+
+.env
+.envrc

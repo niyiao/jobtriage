@@ -1,0 +1,62 @@
+[project]
+name = "jobtriage"
+version = "0.3.0"
+description = "Scrape remote job boards, keep the relevant roles, remember them in SQLite, triage them from the keyboard."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Niyi Adeosun", email = "deniyi.adeosun@gmail.com" }
+]
+# The floors of the four dependencies are 3.9 (textual, tomlkit), 3.10
+# (mcp) and 3.11 (platformdirs); the code itself needs 3.11 for tomllib.
+requires-python = ">=3.11"
+keywords = ["jobs", "job-search", "job-boards", "scraping", "cli", "sqlite", "tui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "mcp>=2.3.0",
+    "platformdirs>=4.3.0",
+    "textual>=8.2.8",
+    "tomlkit>=0.15.2",
+]
+
+# No git remote is configured yet; the repository will live under the
+# niyiao account once one is added.
+[project.urls]
+Homepage = "https://github.com/niyiao/jobtriage"
+Repository = "https://github.com/niyiao/jobtriage"
+
+[project.scripts]
+jobtriage = "jobtriage.cli.main:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3", "ruff>=0.14"]
+
+# The house style (AGENTS.md): tabs, single quotes, long docstrings that
+# explain *why*. `indent-width = 2` is how a tab *renders* everywhere this
+# repo is edited — ruff formats with real tab characters via
+# `indent-style = "tabs"`.
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+indent-width = 2
+
+[tool.ruff.format]
+indent-style = "tab"
+quote-style = "single"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
