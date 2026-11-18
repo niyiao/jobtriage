@@ -1,0 +1,110 @@
+# Publish a tagged release to PyPI with trusted publishing (OIDC) — no
+# API token or password is stored anywhere.
+#
+# Configure it once, before the first tag:
+#   1. The GitHub account in pyproject.toml's [project.urls] is the
+#      real one (niyiao).
+#   2. PyPI → Your projects → jobtriage → Publishing → add a pending
+#      trusted publisher: owner OWNER, repository jobtriage, workflow
+#      release.yml, and environment `pypi` if you uncomment that line
+#      on the publish job below.
+#   3. Optional dry run: create a `testpypi` environment under
+#      Settings → Environments, add the same publisher on test.pypi.org,
+#      and uncomment the `testpypi` job at the bottom.
+#
+# Then: git tag v0.3.0 && git push origin v0.3.0
+#
+# The tag must match [project].version in pyproject.toml; the build job
+# refuses a mismatch before anything is uploaded.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Build the sdist and the wheel
+        run: uv build
+      - name: Check the tag matches the package version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(python3 -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"])')"
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$tag" != "$version" ]; then
+            echo "tag $GITHUB_REF_NAME does not match package version $version" >&2
+            exit 1
+          fi
+      - name: Install the wheel like a user would, then --version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          uv tool install ./dist/*.whl
+          bin="$(uv tool dir --bin)"
+          export HOME="$RUNNER_TEMP/home"
+          mkdir -p "$HOME"
+          output="$("$bin/jobtriage" --version)"
+          printf '%s\n' "$output"
+          printf '%s\n' "$output" | head -n 1 | grep -qx "jobtriage $version"
+      - name: Keep the artefacts for the publish job
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Create the environment in Settings → Environments and use the same
+    # name in the PyPI trusted publisher, or leave this commented to
+    # publish without one.
+    # environment: pypi
+    permissions:
+      id-token: write # the OIDC token PyPI exchanges for an upload token
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  # TestPyPI dry run. Uncomment this job (and create the `testpypi`
+  # environment) to exercise the upload without touching PyPI. The
+  # version cannot be uploaded twice on either index, so delete the
+  # TestPyPI release before re-running.
+  #
+  # testpypi:
+  #   name: dry run on TestPyPI
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   environment: testpypi
+  #   permissions:
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/download-artifact@v4
+  #       with:
+  #         name: dist
+  #         path: dist/
+  #     - name: Publish to TestPyPI
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #       with:
+  #         repository-url: https://test.pypi.org/legacy/
