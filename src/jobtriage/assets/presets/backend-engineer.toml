@@ -1,0 +1,52 @@
+# backend-engineer — server-side roles: APIs, services, data stores,
+# infrastructure-adjacent engineering.
+#
+# The gates work like every preset: require_any AND include_any, then
+# no exclude_any hit. Tweak the lists here in your own config, or use
+# the *_extra keys in [filter] to extend them without editing this file.
+
+require_any = [
+	'back[ -]?end',
+	'api',
+	'server',
+	'services?',
+	'platform',
+	'infrastructure',
+	'distributed systems?',
+	'software',
+	'golang',
+	'python',
+	'java',
+	'kotlin',
+	'rust',
+	'ruby',
+	'php',
+	'node(?:\.?js)?',
+	'typescript',
+	'c#',
+	'c\+\+',
+	'postgres(?:ql)?',
+]
+
+include_any = [
+	'engineers?',
+	'developers?',
+	'architects?',
+	'sre',
+]
+
+exclude_any = [
+	'(?:sales|solutions|support|implementation)[ -]engineer',
+	'manager',
+	'advocate',
+	'evangelist',
+	'relations',
+	'security',
+	'ios',
+	'android',
+	'mobile',
+	'flutter',
+	'react native',
+	'front[ -]?end',
+	'wordpress',
+]

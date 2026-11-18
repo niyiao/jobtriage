@@ -1,0 +1,38 @@
+# product-manager — product management and product ownership.
+#
+# The gates work like every preset: require_any AND include_any, then
+# no exclude_any hit. Engineering and project management are turned
+# away; this is the product role, not the delivery role.
+
+require_any = [
+	'product manager',
+	'product owner',
+	'product lead',
+	'product director',
+	'product management',
+	'\bpm\b',
+	'head of product',
+	'vp product',
+]
+
+include_any = [
+	'product',
+	'manager',
+	'owner',
+	'lead',
+	'director',
+	'head',
+	'\bvp\b',
+]
+
+exclude_any = [
+	'engineering manager',
+	'project manager',
+	'program manager',
+	'programme manager',
+	'sales',
+	'solutions',
+	'support',
+	'recruiter',
+	'designer',
+]

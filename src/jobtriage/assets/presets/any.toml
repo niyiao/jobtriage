@@ -1,0 +1,10 @@
+# any — no title filter at all.
+#
+# This is the default for a fresh op folder: the board's category is
+# the only narrowing, and every title the board sends is kept. Pick a
+# more specific preset, or write your own lists in [filter], when the
+# category alone is too broad.
+
+require_any = []
+include_any = []
+exclude_any = []

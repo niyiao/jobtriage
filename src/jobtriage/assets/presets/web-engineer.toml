@@ -1,0 +1,53 @@
+# web-engineer — today's relevance.py lists, moved verbatim.
+#
+# A title must carry a role word AND a builder word, and must carry no
+# turnaway word. The fragments are regexes, matched case-insensitively
+# and on word boundaries.
+#
+# require_any: the platform, language or stack named as the role itself
+require_any = [
+	'web',
+	'website',
+	'software',
+	'product',
+	'ai',
+	'full[ -]?stack',  # fullstack / full-stack / full stack
+	'front[ -]?end',   # frontend / front-end / front end
+	'typescript',
+	'javascript',
+	'node(?:\.?js)?',  # node / nodejs / node.js
+	'golang',
+	'python',
+	'go',
+	'react',
+	'vue',
+	'svelte',
+]
+
+# include_any: the word that makes it a builder's job, not the
+# department's ("Engineering Manager" deliberately does not count)
+include_any = [
+	'engineers?',
+	'developers?',
+]
+
+# exclude_any: titles that pass both gates while being somebody else's
+# job — sales/solutions/support engineering, management, DevRel,
+# security/networking, and the mobile family (which shares "React" and
+# "AI Integration" with web work).
+exclude_any = [
+	'(?:sales|solutions|support|implementation)[ -]engineer',
+	'federal',
+	'manager',
+	'advocate',
+	'evangelist',
+	'relations',
+	'security',
+	'network',
+	'interviewer',
+	'ios',
+	'android',
+	'mobile',
+	'flutter',
+	'react native',
+]

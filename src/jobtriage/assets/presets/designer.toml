@@ -1,0 +1,43 @@
+# designer — product, UX/UI, interaction and visual design roles.
+#
+# The gates work like every preset: require_any AND include_any, then
+# no exclude_any hit. Design-adjacent engineering titles are turned
+# away; use the *-engineer presets for those.
+
+require_any = [
+	'design',
+	'designers?',
+	'\bux\b',
+	'\bui\b',
+	'interaction',
+	'visual',
+	'product design',
+	'brand',
+	'graphic',
+	'illustrat(?:or|ion)',
+]
+
+include_any = [
+	'designers?',
+	'\bux\b',
+	'\bui\b',
+	'product',
+	'interaction',
+	'visual',
+	'brand',
+	'graphic',
+	'lead',
+	'senior',
+	'principal',
+	'director',
+]
+
+exclude_any = [
+	'engineer',
+	'developer',
+	'architect',
+	'sales',
+	'solutions',
+	'support',
+	'recruiter',
+]

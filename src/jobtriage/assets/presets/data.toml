@@ -1,0 +1,37 @@
+# data — data engineering, analytics, BI, ML and AI roles.
+#
+# The gates work like every preset: require_any AND include_any, then
+# no exclude_any hit.
+
+require_any = [
+	'data',
+	'analytics',
+	'analysts?',
+	'business intelligence',
+	'\bbi\b',
+	'machine[ -]?learning',
+	'\bml\b',
+	'\bai\b',
+	'artificial intelligence',
+	'data science',
+	'scientists?',
+	'machine learning operations',
+	'\bmlops\b',
+]
+
+include_any = [
+	'engineers?',
+	'developers?',
+	'analysts?',
+	'scientists?',
+	'architects?',
+	'leads?',
+	'heads?',
+	'directors?',
+]
+
+exclude_any = [
+	'(?:sales|solutions|support|implementation)[ -]engineer',
+	'recruiter',
+	'account executive',
+]
