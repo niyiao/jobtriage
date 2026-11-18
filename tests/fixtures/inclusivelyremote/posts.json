@@ -1,0 +1,41 @@
+[
+  {
+    "id": 5101,
+    "date_gmt": "2026-11-14T08:00:00",
+    "link": "https://inclusivelyremote.com/job/senior-lead-engineer/",
+    "title": {
+      "rendered": "Senior &amp; Lead Engineer"
+    },
+    "metas": {
+      "_job_employer_name": "Cobalt &amp; Co",
+      "_job_salary": "&#36;140000 - &#36;205000 / year",
+      "_job_location": {
+        "12": "Remote Jobs Worldwide"
+      },
+      "_job_apply_url": "https://boards.example.com/cobalt/apply"
+    },
+    "class_list": [
+      "job_listing",
+      "job_listing_location-worldwide",
+      "job_listing_category-engineering"
+    ]
+  },
+  {
+    "id": 5102,
+    "date_gmt": "2026-11-15T09:00:00",
+    "link": "https://inclusivelyremote.com/job/platform-engineer/",
+    "title": {
+      "rendered": "Platform Engineer"
+    },
+    "metas": {
+      "_job_employer_name": "Fernfield",
+      "_job_salary": "",
+      "_job_location": {}
+    },
+    "class_list": [
+      "job_listing",
+      "job_listing_location-europe_middle-east_africa",
+      "job_listing_category-engineering"
+    ]
+  }
+]

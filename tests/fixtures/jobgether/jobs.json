@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a1b2c3d4",
+    "title": "Frontend Developer",
+    "company": "Northwind",
+    "url": "https://jobgether.com/offer/a1b2c3d4-frontend-developer",
+    "postedAt": "2026-11-15T10:00:00Z",
+    "location": "Anywhere",
+    "salaryRange": "€60k - €80k"
+  },
+  {
+    "id": "a1b2c3d4",
+    "title": "Frontend Developer",
+    "company": "Northwind",
+    "url": "https://jobgether.com/offer/a1b2c3d4-frontend-developer",
+    "postedAt": "2026-11-15T10:00:00Z",
+    "location": "Anywhere",
+    "salaryRange": "€60k - €80k"
+  },
+  {
+    "id": "b2c3d4e5",
+    "title": "Asesor Comercial Ventas",
+    "company": "Televentas SL",
+    "url": "https://jobgether.com/offer/b2c3d4e5-asesor-comercial",
+    "postedAt": "2026-11-16T11:00:00.652Z",
+    "location": "Spain",
+    "salaryRange": null
+  },
+  {
+    "id": "c3d4e5f6",
+    "title": "Backend Engineer",
+    "company": "Cobalt Cloud",
+    "url": "https://jobgether.com/offer/c3d4e5f6-backend-engineer",
+    "postedAt": "2026-11-14T09:00:00Z",
+    "location": "Germany, European Union",
+    "salaryRange": ""
+  }
+]

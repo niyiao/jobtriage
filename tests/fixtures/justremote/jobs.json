@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Senior Rails Engineer",
+    "company_name": "Fernfield",
+    "href": "remote-jobs/senior-rails-engineer-3301",
+    "category": "developer",
+    "date": "10 Nov",
+    "location_restrictions": []
+  },
+  {
+    "title": "Growth Marketer",
+    "company_name": "Northwind",
+    "href": "remote-jobs/growth-marketer-3302",
+    "category": "marketing",
+    "date": "12 Nov",
+    "location_restrictions": [
+      "United Kingdom"
+    ]
+  },
+  {
+    "title": "Platform Engineer",
+    "company_name": "Cobalt Cloud",
+    "href": "remote-jobs/platform-engineer-3303",
+    "category": "developer",
+    "date": "14 Nov",
+    "location_restrictions": [
+      "Germany"
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  [
+    {
+      "id": 4101,
+      "title": "Senior Frontend Engineer",
+      "author": "Cobalt Cloud",
+      "isoDate": "2026-11-10T08:00:00.000Z",
+      "geoRegions": ",europe,",
+      "salaryMinYearly": 120000,
+      "salaryMaxYearly": 150000,
+      "salary": "€108k - €135k per year"
+    },
+    {
+      "id": 4102,
+      "title": "Senior Frontend Engineer",
+      "author": "Cobalt Cloud",
+      "isoDate": "2026-11-14T08:00:00.000Z",
+      "geoRegions": ",worldwide,",
+      "salaryMinYearly": 120000,
+      "salaryMaxYearly": 150000,
+      "salary": "€108k - €135k per year"
+    },
+    {
+      "id": 4103,
+      "title": "Data Engineer",
+      "author": "Fernfield",
+      "isoDate": "2026-11-16T09:00:00.000Z",
+      "geoRegions": ",africa,middle-east,",
+      "salaryMinYearly": 1000,
+      "salaryMaxYearly": 2000,
+      "salary": "1k - 2k per year"
+    },
+    {
+      "id": 4104,
+      "title": "Backend Engineer",
+      "author": "Northwind",
+      "isoDate": "2026-11-12T10:00:00.000Z",
+      "geoRegions": null,
+      "salaryMinYearly": 90000,
+      "salaryMaxYearly": 110000,
+      "salary": ""
+    }
+  ]
+]

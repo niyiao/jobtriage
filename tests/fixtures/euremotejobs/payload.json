@@ -1,0 +1,19 @@
+{
+  "region_pairs": [
+    [
+      "remote-jobs-worldwide",
+      "Worldwide"
+    ],
+    [
+      "remote-jobs-emea",
+      "EMEA"
+    ],
+    [
+      "germany",
+      "Germany"
+    ]
+  ],
+  "pages": [
+    "<div class=\"erj-results\">\n<a class=\"job-card-link\" href=\"https://euremotejobs.com/jobs/1001-senior-backend-engineer\">\n  <time datetime=\"2026-11-15\">posted</time>\n  <h2 class=\"job-title\">Senior Backend Engineer</h2>\n  <div class=\"company-name\">Cobalt Cloud</div>\n  <div class=\"meta-item meta-location\">Worldwide</div>\n  <div class=\"meta-item\">€90.000 - €110.000</div>\n</a>\n<a class=\"job-card-link\" href=\"https://euremotejobs.com/jobs/1002-frontend-engineer\">\n  <time datetime=\"2026-11-16\">posted</time>\n  <h2 class=\"job-title\">Frontend Engineer</h2>\n  <div class=\"company-name\">Fernfield</div>\n  <div class=\"meta-item meta-location\">EMEA, US</div>\n  \n</a>\n<a class=\"job-card-link\" href=\"https://euremotejobs.com/jobs/1001-senior-backend-engineer\">\n  <time datetime=\"2026-11-15\">posted</time>\n  <h2 class=\"job-title\">Senior Backend Engineer</h2>\n  <div class=\"company-name\">Cobalt Cloud</div>\n  <div class=\"meta-item meta-location\">Worldwide</div>\n  <div class=\"meta-item\">€90.000 - €110.000</div>\n</a>\n</div>\n"
+  ]
+}

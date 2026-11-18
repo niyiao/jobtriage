@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "uuid": "6c1f2a",
+      "slug": "senior-frontend-engineer",
+      "title": "Senior Frontend Engineer",
+      "postedAt": "2026-11-13T10:00:00Z",
+      "company": {
+        "name": "Northwind"
+      },
+      "eligibilityScopes": [
+        "WORLDWIDE"
+      ],
+      "salaryMinUsd": 90000,
+      "salaryMaxUsd": 120000
+    },
+    {
+      "uuid": "9d2e4b",
+      "slug": "backend-engineer",
+      "title": "Backend Engineer",
+      "postedAt": "2026-11-15T09:00:00Z",
+      "company": {
+        "name": "Cobalt Cloud"
+      },
+      "eligibilityScopes": [
+        "EMEA"
+      ],
+      "salaryMinUsd": 100000,
+      "salaryMaxUsd": 100000
+    },
+    {
+      "uuid": "1a7c3d",
+      "slug": "staff-engineer",
+      "title": "Staff Engineer",
+      "postedAt": "2026-11-16T12:00:00Z",
+      "company": {
+        "name": "Lakeside Labs"
+      },
+      "eligibilityScopes": [
+        "NORTH_AMERICA"
+      ],
+      "salaryMinUsd": 0,
+      "salaryMaxUsd": 0
+    }
+  ]
+}

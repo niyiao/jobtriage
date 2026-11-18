@@ -1,0 +1,126 @@
+[
+  {
+    "document": {
+      "name": "projects/djplatform/databases/(default)/documents/jobs/senior-backend-engineer",
+      "fields": {
+        "title": {
+          "stringValue": "Senior Backend Engineer"
+        },
+        "slug": {
+          "stringValue": "senior-backend-engineer"
+        },
+        "categoriesSlugs": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "development"
+              }
+            ]
+          }
+        },
+        "locationSlugs": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "worldwide"
+              }
+            ]
+          }
+        },
+        "company": {
+          "mapValue": {
+            "fields": {
+              "name": {
+                "stringValue": "Cobalt Cloud"
+              },
+              "username": {
+                "stringValue": "cobalt-cloud"
+              }
+            }
+          }
+        },
+        "salary": {
+          "mapValue": {
+            "fields": {
+              "public": {
+                "booleanValue": true
+              },
+              "from": {
+                "integerValue": "80000"
+              },
+              "to": {
+                "integerValue": "100000"
+              },
+              "type": {
+                "stringValue": "yearly"
+              }
+            }
+          }
+        },
+        "publishedAt": {
+          "stringValue": "2026-11-14T09:00:00.000Z"
+        }
+      }
+    },
+    "readTime": "2026-11-18T09:00:00.000000Z"
+  },
+  {
+    "document": {
+      "name": "projects/djplatform/databases/(default)/documents/jobs/product-designer",
+      "fields": {
+        "title": {
+          "stringValue": "Product Designer"
+        },
+        "slug": {
+          "stringValue": "product-designer"
+        },
+        "categoriesSlugs": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "development"
+              }
+            ]
+          }
+        },
+        "locationSlugs": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "europe"
+              }
+            ]
+          }
+        },
+        "company": {
+          "mapValue": {
+            "fields": {
+              "name": {
+                "stringValue": "Fernfield"
+              },
+              "username": {
+                "stringValue": "fernfield"
+              }
+            }
+          }
+        },
+        "salary": {
+          "mapValue": {
+            "fields": {
+              "public": {
+                "booleanValue": false
+              },
+              "from": {
+                "integerValue": "70000"
+              }
+            }
+          }
+        },
+        "sortDateAt": {
+          "timestampValue": "2026-11-16T10:00:00Z"
+        }
+      }
+    },
+    "readTime": "2026-11-18T09:00:00.000000Z"
+  }
+]

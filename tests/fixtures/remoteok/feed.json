@@ -1,0 +1,55 @@
+[
+  {
+    "last_updated": 1794787200,
+    "legal": "See https://remoteok.com/api"
+  },
+  {
+    "position": "Senior Backend Engineer",
+    "company": "Cobalt Cloud",
+    "location": "MÃ¼nchen",
+    "date": "2026-11-15T08:00:00+00:00",
+    "url": "https://remoteok.com/remote-jobs/1042-senior-backend-engineer",
+    "salary_min": 190000,
+    "salary_max": 220000,
+    "tags": [
+      "dev",
+      "engineer"
+    ]
+  },
+  {
+    "position": "Account Executive",
+    "company": "Lakeside Labs",
+    "location": "",
+    "date": "2026-11-16T09:30:00+00:00",
+    "url": "https://remoteok.com/remote-jobs/1043-account-executive",
+    "salary_min": 0,
+    "salary_max": 0,
+    "tags": [
+      "dev"
+    ]
+  },
+  {
+    "position": "Sales Engineer",
+    "company": "Northwind",
+    "location": "Remote - US",
+    "date": "2026-11-14T12:00:00+00:00",
+    "url": "https://remoteok.com/remote-jobs/1044-sales-engineer",
+    "salary_min": 90000,
+    "salary_max": 0,
+    "tags": [
+      "dev"
+    ]
+  },
+  {
+    "position": "Frontend Developer",
+    "company": "Fern &amp; Field",
+    "location": "",
+    "date": "2026-11-13T07:00:00+00:00",
+    "url": "https://remoteok.com/remote-jobs/1045-frontend-developer",
+    "salary_min": 0,
+    "salary_max": 150000,
+    "tags": [
+      "dev"
+    ]
+  }
+]

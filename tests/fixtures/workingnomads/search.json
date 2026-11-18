@@ -1,0 +1,40 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "hits": {
+    "total": 2,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "jobs",
+        "_id": "wn-101",
+        "_score": null,
+        "_source": {
+          "title": "Junior Web Developer",
+          "company": "Fern & Field",
+          "slug": "junior-web-developer-fern-field",
+          "pub_date": "2026-11-12T09:00:00+00:00",
+          "locations": [
+            "EMEA"
+          ],
+          "salary_range_short": ""
+        }
+      },
+      {
+        "_index": "jobs",
+        "_id": "wn-102",
+        "_score": null,
+        "_source": {
+          "title": "Platform Engineer",
+          "company": "Cobalt Cloud",
+          "slug": "platform-engineer-cobalt-cloud",
+          "pub_date": "2026-11-14T08:30:00+00:00",
+          "locations": [
+            "Anywhere"
+          ],
+          "salary_range_short": "$120k - $150k"
+        }
+      }
+    ]
+  }
+}
