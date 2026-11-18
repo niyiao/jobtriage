@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Install the locked environment
+        run: uv sync --frozen
+      - name: Lint
+        run: uv run ruff check
+      - name: Format
+        run: uv run ruff format --check
+
+  test:
+    name: test (${{ matrix.os }}, ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # The three platforms the tool claims, each at the floor
+        # (pyproject requires-python) and its current release.
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+      - name: Install the locked environment
+        run: uv sync --frozen
+      - name: Test
+        run: uv run pytest -q
+
+  build:
+    name: wheel install
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Build the wheel
+        run: uv build
+      - name: Install it like a user would, then init and doctor
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv tool install ./dist/*.whl
+          bin="$(uv tool dir --bin)"
+          # A throwaway HOME and op folder: doctor must pass on a machine
+          # with no Chrome and no display, which is why CI runs it
+          # --offline (no browser, port or board checks).
+          export HOME="$RUNNER_TEMP/home"
+          mkdir -p "$HOME" "$RUNNER_TEMP/op"
+          "$bin/jobtriage" --version
+          "$bin/jobtriage" init --yes "$RUNNER_TEMP/op"
+          JOBTRIAGE_HOME="$RUNNER_TEMP/op" "$bin/jobtriage" doctor --offline

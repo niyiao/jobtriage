@@ -1,0 +1,62 @@
+# The nightly board canary: run every enabled board for real and file one
+# issue per board that stopped answering. This job is network-by-design —
+# unlike the CI suite, its whole purpose is to touch the live sites.
+#
+# Before enabling on a fork or a new repository, update
+# pyproject.toml's [project.urls] to it (the canary links back from its
+# issues) and make sure Actions may open issues: Settings → Actions → General →
+# Workflow permissions → Read and write, or the default `issues: write`
+# below on a repository that allows it.
+#
+# The issues ARE the history: `canary: <board> broken` stays open while the
+# board fails, is edited in place while the error changes, and closes with
+# the run that first saw the board recover. There is no database to keep
+# between runs.
+
+name: Board canary
+
+on:
+  schedule:
+    # 05:23 UTC daily: after the boards' usual overnight posting, and off
+    # the hour so the run does not queue behind everyone else's cron.
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    name: live boards
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Build and install the wheel
+        run: |
+          uv build
+          uv tool install ./dist/*.whl
+      - name: Test every enabled board
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          bin="$(uv tool dir --bin)"
+          export HOME="$RUNNER_TEMP/home"
+          mkdir -p "$HOME" "$RUNNER_TEMP/op"
+          "$bin/jobtriage" init --yes "$RUNNER_TEMP/op"
+          status=0
+          JOBTRIAGE_HOME="$RUNNER_TEMP/op" \
+            "$bin/jobtriage" sources test --all --json > "$RUNNER_TEMP/canary.json" || status=$?
+          # 0 = every board passed, 1 = at least one did not. Both are the
+          # report's input; a crash that wrote no JSON fails in the script.
+          echo "sources test exit status: $status"
+          python3 scripts/canary_report.py "$RUNNER_TEMP/canary.json"
