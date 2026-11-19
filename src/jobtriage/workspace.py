@@ -284,17 +284,17 @@ def create(path: Path, upgrade: bool = False) -> tuple[Workspace, list[str]]:
 		if not target.exists():
 			target.parent.mkdir(parents=True, exist_ok=True)
 			target.write_bytes(data)
-			notes.append(f'created {target.relative_to(root)}')
+			notes.append(f'created {target.relative_to(root).as_posix()}')
 		elif upgrade and rel in old_manifest:
 			if _sha256(target) == old_manifest[rel]:
 				if _sha256(target) != digest:  # untouched: ours to refresh
 					target.write_bytes(data)
-					notes.append(f'upgraded {target.relative_to(root)}')
+					notes.append(f'upgraded {target.relative_to(root).as_posix()}')
 			else:  # the user has edited it: theirs, not ours
 				beside = target.with_name(target.name + '.new')
 				beside.write_bytes(data)
 				notes.append(
-					f'{target.relative_to(root)} left alone (edited) — new version saved as {beside.name}'
+					f'{target.relative_to(root).as_posix()} left alone (edited) — new version saved as {beside.name}'
 				)
 		elif rel not in old_manifest and upgrade:
 			pass  # a file that was never ours: leave it, say nothing

@@ -256,6 +256,15 @@ def test_migration_3_adds_source_runs_to_a_version_2_database(db_path, tmp_path)
 	finally:
 		conn.close()
 
+	# The migration below backs up the version it changes away from.
+	# Clear the folder first: the fresh-database migrate at the top
+	# already left its own jobs-2 backup, and a re-migrate inside the
+	# same wall-clock second silently overwrites it (the name's
+	# timestamp is second-granular) — without this, the count below is
+	# time-dependent and flaky on a slow runner.
+	for stale in (tmp_path / 'backups').glob('jobs-*.db'):
+		stale.unlink()
+
 	assert db.migrate(db_path, tmp_path / 'backups') == 3
 
 	assert _version(db_path) == 3

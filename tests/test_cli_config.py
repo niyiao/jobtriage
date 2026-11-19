@@ -154,7 +154,10 @@ def test_get_unknown_key_is_a_clean_error(ws, capsys):
 
 def test_set_get_round_trip_preserves_an_unrelated_comment(ws, capsys):
 	original = '# keep this comment — it documents the file\n[search]\n# and this one\nlimit = 10\n'
-	ws.config.write_text(original)
+	# UTF-8 explicitly: the loader's contract is UTF-8 TOML, and
+	# `write_text` alone would use the locale codec (cp1252 on Windows),
+	# whose em-dash byte the loader rightly refuses.
+	ws.config.write_text(original, encoding='utf-8')
 
 	assert run_config(ws, 'set', 'search.limit', '20') == 0
 	assert capsys.readouterr().out.strip() == 'search.limit = 20'

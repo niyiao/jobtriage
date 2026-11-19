@@ -16,15 +16,20 @@ wheels/
 jobs.db
 jobtriage.db
 
-# Personal data — lives in the op folder, never in the repo (safety net)
-user/
-letters/
-profile/
+# Personal data — lives in the op folder, never in the repo (safety net).
+# Anchored to the repo root, where an op folder would land if someone ran
+# `jobtriage init .`: unanchored, `letters/` and `profile/` also swallowed
+# src/jobtriage/assets/letters/ and src/jobtriage/assets/profile/ — the
+# shipped templates existed on dev machines and were silently absent from
+# every fresh checkout, so the wheel shipped without them.
+/user/
+/letters/
+/profile/
 *.har
 .DS_Store
 
 # Personal planning notes — never ship
-plans/
+/plans/
 
 .env
 .envrc

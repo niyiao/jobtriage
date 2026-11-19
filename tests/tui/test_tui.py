@@ -291,10 +291,12 @@ def test_the_app_mounts_and_loads(job, db_path):
 
 	async def scenario():
 		async with app.run_test(size=(80, 24)) as pilot:
-			for _ in range(100):
-				if app._state == 'ready':
-					break
-				await pilot.pause(0.01)
+			# A wall-clock deadline, not an iteration count: the budget
+			# must not depend on how fast the runner pumps messages —
+			# CI Windows needs real seconds for the startup worker.
+			deadline = time.monotonic() + 30.0
+			while app._state != 'ready' and time.monotonic() < deadline:
+				await pilot.pause(0.05)
 			assert app._state == 'ready'
 			assert [entry['title'] for entry in app._jobs] == ['Mounted']
 			# The live screen renders through the widgets, not one Panel.

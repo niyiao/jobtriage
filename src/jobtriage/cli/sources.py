@@ -600,7 +600,7 @@ def run_new(args, ws) -> int:
 		print(f'note: {args.name} is already a {existing.origin} board; this file overrides it')
 	target.parent.mkdir(parents=True, exist_ok=True)
 	target.write_text(_NAME_LINE.sub(f'NAME = {args.name!r}', source, count=1), encoding='utf-8')
-	print(f'created {target.relative_to(ws.root)}')
+	print(f'created {target.relative_to(ws.root).as_posix()}')
 	print(f'next: point API_URL and parse() at the board, then `jobtriage sources test {args.name}`')
 	return 0
 

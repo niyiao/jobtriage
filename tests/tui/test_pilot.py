@@ -16,6 +16,7 @@ overlay, and the footer generated from the same table the keys are.
 import asyncio
 import json
 import threading
+import time
 
 from jobtriage import chrome, config, db, store, workspace
 from jobtriage.cli.tui import opener_for
@@ -136,11 +137,21 @@ def _run(scenario):
 	asyncio.run(scenario())
 
 
-async def _until(pilot, condition):
-	for _ in range(300):
+async def _until(pilot, condition, timeout=30.0):
+	"""Wait in small steps until the condition holds, on a wall-clock
+	deadline.
+
+	An iteration count made the budget a property of the runner: a
+	loaded Windows CI box starved the startup worker for the whole
+	fixed count, so the same test passed or failed by machine load. A
+	deadline waits the same everywhere, costs nothing when the state
+	lands fast, and still fails — rather than hangs — on a real bug.
+	"""
+	deadline = time.monotonic() + timeout
+	while time.monotonic() < deadline:
 		if condition():
 			return
-		await pilot.pause(0.01)
+		await pilot.pause(0.05)
 	raise AssertionError('the app never reached the expected state')
 
 

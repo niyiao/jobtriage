@@ -79,10 +79,16 @@ def install(monkeypatch, *modules):
 
 
 def plugin(ws, source, stem='alpha'):
-	"""Write one workspace plugin file."""
+	"""Write one workspace plugin file.
+
+	UTF-8 explicitly: Python reads source as UTF-8 on every platform,
+	while `write_text` alone would use the locale codec — cp1252 on
+	Windows, whose em-dash byte breaks the import and turns the board
+	into an 'unknown board' usage error.
+	"""
 	ws.scrapers.mkdir(parents=True, exist_ok=True)
 	path = ws.scrapers / f'{stem}.py'
-	path.write_text(source)
+	path.write_text(source, encoding='utf-8')
 	return path
 
 
