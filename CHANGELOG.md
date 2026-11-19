@@ -2,12 +2,12 @@
 
 All notable changes to this project are documented here. The format is
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the
-project uses [Semantic Versioning](https://semver.org/). The next
+project uses [Semantic Versioning](https://semver.org/). The current
 release in `pyproject.toml` is 0.3.0. The entries before it are
 reconstructed from the commit history, which is short and linear:
 0.1.0 is the first commit, 0.2.0 the database rewrite.
 
-## [Unreleased]
+## [0.3.0] - 2026-11-19
 
 ### Added
 
