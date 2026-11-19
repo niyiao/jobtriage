@@ -72,10 +72,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # Create the environment in Settings → Environments and use the same
-    # name in the PyPI trusted publisher, or leave this commented to
-    # publish without one.
-    # environment: pypi
+    environment: pypi
     permissions:
       id-token: write # the OIDC token PyPI exchanges for an upload token
     steps:
