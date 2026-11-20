@@ -32,8 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/checkout@v7
+      # setup-uv has no floating major tag since v8 (supply-chain
+      # policy): pin the full version.
+      - uses: astral-sh/setup-uv@v10.3.3
         with:
           enable-cache: true
       - name: Build the sdist and the wheel
@@ -61,7 +63,7 @@ jobs:
           printf '%s\n' "$output"
           printf '%s\n' "$output" | head -n 1 | grep -qx "jobtriage $version"
       - name: Keep the artefacts for the publish job
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
@@ -76,7 +78,7 @@ jobs:
     permissions:
       id-token: write # the OIDC token PyPI exchanges for an upload token
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
@@ -97,7 +99,7 @@ jobs:
   #   permissions:
   #     id-token: write
   #   steps:
-  #     - uses: actions/download-artifact@v4
+  #     - uses: actions/download-artifact@v8
   #       with:
   #         name: dist
   #         path: dist/
